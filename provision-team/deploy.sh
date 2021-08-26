@@ -241,6 +241,8 @@ echo "Building Simulator image..."
 echo "Changing directory to $GITOHPROCTORDIRPATH/simulator..."
 cd "$GITOHPROCTORDIRPATH/simulator"
 
+sed -i -e 's|microsoft/dotnet:2.1-runtime|mcr.microsoft.com/dotnet/aspnet:2.1|' Dockerfile
+sed -i -e 's|microsoft/dotnet:2.1-sdk|mcr.microsoft.com/dotnet/sdk:2.1|' Dockerfile
 submitACRBuild "simulator" "latest"
 
 # Final sanity check for repositories being present
